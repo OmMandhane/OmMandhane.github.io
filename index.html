@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Om Mandhane | Robotics & AI</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <style>
+        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; display: flex; }
+        #sidebar { width: 30%; padding-right: 40px; position: sticky; top: 20px; height: 100vh; }
+        #content { width: 70%; }
+        .profile-img { width: 100%; border-radius: 10px; filter: grayscale(20%); }
+        h1 { margin-bottom: 0; }
+        .subtitle { color: #666; font-size: 0.9em; margin-bottom: 20px; }
+        .section-title { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 40px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
+        .project { margin-bottom: 30px; }
+        .video-container { margin-top: 10px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; }
+        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
+        .skill-tag { background: #f0f0f0; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
+        a { color: #007bff; text-decoration: none; }
+        @media (max-width: 768px) { body { flex-direction: column; } #sidebar, #content { width: 100%; position: static; height: auto; } }
+    </style>
+</head>
+<body>
+
+    <div id="sidebar">
+        <img src="your-photo.jpg" alt="Om Mandhane" class="profile-img">
+        <h1>Om Mandhane</h1>
+        <p class="subtitle">B.E. Automation & Robotics<br>VESIT, Mumbai</p>
+        <p>
+            <a href="mailto:ommandhane27@gmail.com"><i class="fas fa-envelope"></i> Email</a><br>
+            <a href="https://github.com/OmMandhane"><i class="fab fa-github"></i> GitHub</a><br>
+            <a href="https://www.linkedin.com/in/ommandhane/"><i class="fab fa-linkedin"></i> LinkedIn</a>
+        </p>
+        <div class="section-title">Education</div>
+        <p style="font-size: 0.85em;">
+            <strong>VESIT, Mumbai</strong><br>
+            B.E. Automation & Robotics<br>
+            Minor in AI/ML<br>
+            CGPA: 8.66/10
+        </p>
+    </div>
+
+    <div id="content">
+        <section>
+            <p>I am a final-year Robotics student focused on <strong>Embodied AI</strong> and <strong>Vision-Language-Action (VLA)</strong> models. Currently working on low-latency mobile teleoperation for robot manipulation.</p>
+        </section>
+
+        <div class="section-title">Featured Projects</div>
+
+        <div class="project">
+            <h3>End-to-End VLA Policy Learning</h3>
+            <p>Fine-tuned NVIDIA’s <strong>GR00T N1.5</strong> for manipulation tasks using custom LeRobot datasets. Developed a 6-DoF mobile teleoperation system with 300ms latency.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>HexBot: SLAM & Navigation</h3>
+            <p>A differential drive robot utilizing SLAM-Toolbox and Nav2. Integrated VR headset and joystick control for remote exploration.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/tKs1At_50i4" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="project">
+            <h3>Autonomous Warehouse Drone</h3>
+            <p>Built for IIT Bombay e-Yantra. Implemented RRT* path planning and computer vision for package recognition in Gazebo/ROS2.</p>
+            <div class="video-container">
+                <iframe src="https://www.youtube.com/embed/d_QmQpVg4uA" frameborder="0" allowfullscreen></iframe>
+            </div>
+        </div>
+
+        <div class="section-title">Experience</div>
+        <p><strong>Bhabha Atomic Research Centre (BARC)</strong> | Project Intern<br>
+        Developed ROS2 software stack for indoor mobile robots and optimized VFH algorithms for obstacle avoidance.</p>
+
+        <div class="section-title">Honors & Awards</div>
+        <ul>
+            <li><strong>ISA General Education Endowment Scholarship ($2,000)</strong> - 2025</li>
+            <li><strong>Stage 2 Qualifier</strong> - IIT Bombay e-Yantra Robotics (Multiple Years)</li>
+            <li><strong>Prototype Stage</strong> - Vishwakarma Awards 2025 (Smart Mobility)</li>
+        </ul>
+
+        <div class="section-title">Skills</div>
+        <div>
+            <span class="skill-tag">ROS 2</span> <span class="skill-tag">PyTorch</span> <span class="skill-tag">C++</span> 
+            <span class="skill-tag">Python</span> <span class="skill-tag">MoveIt</span> <span class="skill-tag">Gazebo</span>
+            <span class="skill-tag">Computer Vision</span> <span class="skill-tag">Control Systems (PID)</span>
+        </div>
+    </div>
+
+</body>
+</html>
