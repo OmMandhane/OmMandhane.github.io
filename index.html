@@ -3,92 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Om Mandhane | Robotics & AI</title>
+    <title>Om Mandhane | Robotics & AI Portfolio</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
-        body { font-family: 'Inter', sans-serif; line-height: 1.6; color: #333; max-width: 1000px; margin: 0 auto; padding: 20px; display: flex; }
-        #sidebar { width: 30%; padding-right: 40px; position: sticky; top: 20px; height: 100vh; }
-        #content { width: 70%; }
-        .profile-img { width: 100%; border-radius: 10px; filter: grayscale(20%); }
-        h1 { margin-bottom: 0; }
-        .subtitle { color: #666; font-size: 0.9em; margin-bottom: 20px; }
-        .section-title { border-bottom: 2px solid #eee; padding-bottom: 5px; margin-top: 40px; text-transform: uppercase; font-size: 0.9em; letter-spacing: 1px; }
-        .project { margin-bottom: 30px; }
-        .video-container { margin-top: 10px; position: relative; padding-bottom: 56.25%; height: 0; overflow: hidden; border-radius: 8px; }
-        .video-container iframe { position: absolute; top: 0; left: 0; width: 100%; height: 100%; }
-        .skill-tag { background: #f0f0f0; padding: 3px 10px; border-radius: 5px; font-size: 0.8em; margin-right: 5px; display: inline-block; margin-bottom: 5px; }
-        a { color: #007bff; text-decoration: none; }
-        @media (max-width: 768px) { body { flex-direction: column; } #sidebar, #content { width: 100%; position: static; height: auto; } }
+        :root {
+            --bg-color: #1a1121; /* Dark purple from reference */
+            --sidebar-bg: #150d1a;
+            --accent-color: #d156b1; /* Highlight color */
+            --text-main: #e0e0e0;
+            --text-dim: #b0b0b0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+            background-color: var(--bg-color);
+            color: var(--text-main);
+            margin: 0;
+            display: flex;
+            flex-direction: column;
+        }
+
+        /* Top Navigation Bar */
+        nav {
+            background-color: var(--sidebar-bg);
+            padding: 15px 50px;
+            position: fixed;
+            width: 100%;
+            top: 0;
+            z-index: 1000;
+            display: flex;
+            gap: 25px;
+            border-bottom: 1px solid #333;
+        }
+
+        nav a {
+            color: var(--text-dim);
+            text-decoration: none;
+            font-size: 0.9em;
+            font-weight: 500;
+            transition: 0.3s;
+        }
+
+        nav a:hover {
+            color: var(--accent-color);
+        }
+
+        /* Layout Container */
+        .main-container {
+            display: flex;
+            margin-top: 60px; /* Space for nav */
+            max-width: 1200px;
+            margin-left: auto;
+            margin-right: auto;
+            padding: 40px 20px;
+        }
+
+        /* Left Sidebar */
+        aside {
+            width: 280px;
+            position: sticky;
+            top: 100px;
+            height: fit-content;
+            padding-right: 40px;
+        }
+
+        .profile-pic {
+            width: 100%;
+            border-radius: 8px;
+            margin-bottom: 20px;
+            filter: grayscale(10%);
+        }
+
+        aside h1 { font-size: 1.8em; margin: 10px 0; }
+        .title-sub { color: var(--accent-color); font-size: 0.95em; margin-bottom: 20px; display: block; }
+
+        .social-links a {
+            display: block;
+            color: var(--text-dim);
+            text-decoration: none;
+            margin-bottom: 10px;
+            font-size: 0.9em;
+        }
+
+        .social-links a i { margin-right: 10px; width: 15px; }
+
+        /* Main Content */
+        main {
+            flex: 1;
+            padding-left: 20px;
+        }
+
+        section { margin-bottom: 60px; scroll-margin-top: 100px; }
+        h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 25px; font-size: 1.5em; }
+
+        .exp-item, .project-item { margin-bottom: 30px; }
+        .date { float: right; color: var(--text-dim); font-size: 0.9em; }
+        
+        /* Video Embed Style */
+        .video-box {
+            position: relative;
+            padding-bottom: 56.25%;
+            height: 0;
+            overflow: hidden;
+            border-radius: 8px;
+            margin-top: 15px;
+            background: #000;
+        }
+
+        .video-box iframe {
+            position: absolute;
+            top: 0; left: 0; width: 100%; height: 100%;
+        }
+
+        ul { padding-left: 20px; color: var(--text-dim); }
+        li { margin-bottom: 8px; }
+
+        .skill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
+        .skill-tag { background: #332340; padding: 5px 12px; border-radius: 4px; font-size: 0.85em; }
+
+        @media (max-width: 900px) {
+            .main-container { flex-direction: column; }
+            aside { width: 100%; position: static; padding-right: 0; margin-bottom: 40px; }
+            nav { padding: 15px 20px; overflow-x: auto; }
+        }
     </style>
 </head>
 <body>
 
-    <div id="sidebar">
-        <img src="your-photo.jpg" alt="Om Mandhane" class="profile-img">
-        <h1>Om Mandhane</h1>
-        <p class="subtitle">B.E. Automation & Robotics<br>VESIT, Mumbai</p>
-        <p>
-            <a href="mailto:ommandhane27@gmail.com"><i class="fas fa-envelope"></i> Email</a><br>
-            <a href="https://github.com/OmMandhane"><i class="fab fa-github"></i> GitHub</a><br>
-            <a href="https://www.linkedin.com/in/ommandhane/"><i class="fab fa-linkedin"></i> LinkedIn</a>
-        </p>
-        <div class="section-title">Education</div>
-        <p style="font-size: 0.85em;">
-            <strong>VESIT, Mumbai</strong><br>
-            B.E. Automation & Robotics<br>
-            Minor in AI/ML<br>
-            CGPA: 8.66/10
-        </p>
-    </div>
+    <nav>
+        <a href="#about">About Me</a>
+        <a href="#experience">Experience</a>
+        <a href="#projects">Projects</a>
+        <a href="#awards">Honors and Awards</a>
+        <a href="#skills">Skills</a>
+    </nav>
 
-    <div id="content">
-        <section>
-            <p>I am a final-year Robotics student focused on <strong>Embodied AI</strong> and <strong>Vision-Language-Action (VLA)</strong> models. Currently working on low-latency mobile teleoperation for robot manipulation.</p>
-        </section>
-
-        <div class="section-title">Featured Projects</div>
-
-        <div class="project">
-            <h3>End-to-End VLA Policy Learning</h3>
-            <p>Fine-tuned NVIDIA’s <strong>GR00T N1.5</strong> for manipulation tasks using custom LeRobot datasets. Developed a 6-DoF mobile teleoperation system with 300ms latency.</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
+    <div class="main-container">
+        <aside>
+            <img src="profile.jpg" alt="Om Mandhane" class="profile-pic">
+            <h1>Om Mandhane</h1>
+            <span class="title-sub">Automation & Robotics @ VESIT</span>
+            
+            <div class="social-links">
+                <a href="mailto:ommandhane27@gmail.com"><i class="fas fa-envelope"></i> Email</a>
+                <a href="https://www.linkedin.com/in/ommandhane/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
+                <a href="https://github.com/OmMandhane" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
-        </div>
+        </aside>
 
-        <div class="project">
-            <h3>HexBot: SLAM & Navigation</h3>
-            <p>A differential drive robot utilizing SLAM-Toolbox and Nav2. Integrated VR headset and joystick control for remote exploration.</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/tKs1At_50i4" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
+        <main>
+            <section id="about">
+                <h2>About Me</h2>
+                <p>
+                    I am a final-year Bachelor of Engineering student in <strong>Automation & Robotics</strong> at Vivekanand Education Society’s Institute of Technology (VESIT), Mumbai. 
+                    My work focuses on <strong>Embodied AI</strong> and <strong>Vision-Language-Action (VLA)</strong> models. 
+                    I specialize in developing low-latency teleoperation systems and fine-tuning foundation models for real-world robotic manipulation.
+                </p>
+            </section>
 
-        <div class="project">
-            <h3>Autonomous Warehouse Drone</h3>
-            <p>Built for IIT Bombay e-Yantra. Implemented RRT* path planning and computer vision for package recognition in Gazebo/ROS2.</p>
-            <div class="video-container">
-                <iframe src="https://www.youtube.com/embed/d_QmQpVg4uA" frameborder="0" allowfullscreen></iframe>
-            </div>
-        </div>
+            <section id="experience">
+                <h2>Experience</h2>
+                
+                <div class="exp-item">
+                    <span class="date">Dec 2024 – Mar 2025</span>
+                    <h3>Bhabha Atomic Research Centre (BARC)</h3>
+                    <p><em>Project Intern</em></p>
+                    <ul>
+                        <li>Developed a ROS2 software stack for a custom indoor mobile robot, including URDF creation and Gazebo simulation.</li>
+                        <li>Optimized the VFH algorithm for dynamic object avoidance and real-time navigation.</li>
+                    </ul>
+                </div>
 
-        <div class="section-title">Experience</div>
-        <p><strong>Bhabha Atomic Research Centre (BARC)</strong> | Project Intern<br>
-        Developed ROS2 software stack for indoor mobile robots and optimized VFH algorithms for obstacle avoidance.</p>
+                <div class="exp-item">
+                    <span class="date">2024 – 2025</span>
+                    <h3>Technical Instructor</h3>
+                    <p><em>ISA VESIT</em></p>
+                    <ul>
+                        <li>Led multiple 3-day workshops on ROS 2 and Gazebo for undergraduate students.</li>
+                    </ul>
+                </div>
+            </section>
 
-        <div class="section-title">Honors & Awards</div>
-        <ul>
-            <li><strong>ISA General Education Endowment Scholarship ($2,000)</strong> - 2025</li>
-            <li><strong>Stage 2 Qualifier</strong> - IIT Bombay e-Yantra Robotics (Multiple Years)</li>
-            <li><strong>Prototype Stage</strong> - Vishwakarma Awards 2025 (Smart Mobility)</li>
-        </ul>
+            <section id="projects">
+                <h2>Projects</h2>
 
-        <div class="section-title">Skills</div>
-        <div>
-            <span class="skill-tag">ROS 2</span> <span class="skill-tag">PyTorch</span> <span class="skill-tag">C++</span> 
-            <span class="skill-tag">Python</span> <span class="skill-tag">MoveIt</span> <span class="skill-tag">Gazebo</span>
-            <span class="skill-tag">Computer Vision</span> <span class="skill-tag">Control Systems (PID)</span>
-        </div>
+                <div class="project-item">
+                    <span class="date">Oct 2025 – Jan 2026</span>
+                    <h3>End-to-End VLA Policy Learning</h3>
+                    <p>Developed a 6-DoF teleoperation system using mobile IMU sensors to fine-tune NVIDIA’s <strong>GR00T N1.5</strong> VLA model.</p>
+                    <div class="video-box">
+                        <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <span class="date">Sep 2024 – Mar 2025</span>
+                    <h3>HexBot: SLAM & Navigation</h3>
+                    <p>A ROS-based differential drive robot using SLAM Toolbox and Nav2. Supports remote control via VR headset and joystick.</p>
+                    <div class="video-box">
+                        <iframe src="https://www.youtube.com/embed/tKs1At_50i4" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3>Warehouse Drone (IIT Bombay e-Yantra)</h3>
+                    <p>Autonomous drone system in Gazebo utilizing RRT* path planning and computer vision for package recognition.</p>
+                    <div class="video-box">
+                        <iframe src="https://www.youtube.com/embed/d_QmQpVg4uA" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+
+                <div class="project-item">
+                    <h3>GeoGuide</h3>
+                    <p>Autonomous robot using AlexNet for image classification and Dijkstra's algorithm for path planning in disaster scenarios.</p>
+                    <div class="video-box">
+                        <iframe src="https://www.youtube.com/embed/GSNIV37t3kY" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </section>
+
+            <section id="awards">
+                <h2>Honors and Awards</h2>
+                <ul>
+                    <li><strong>ISA General Education Endowment Scholarship ($2,000)</strong> — 2025</li>
+                    <li><strong>Stage 2 Qualifier</strong>, IIT Bombay e-Yantra Robotics Competition — 2023–25</li>
+                    <li><strong>Tecnimont (MAIRE) Scholarship</strong> for academic excellence — 2024–25</li>
+                    <li><strong>Qualified Prototype Stage</strong>, Vishwakarma Awards 2025</li>
+                    <li><strong>7th Place</strong>, India Automation Games — 2024</li>
+                </ul>
+            </section>
+
+            <section id="skills">
+                <h2>Skills</h2>
+                <div class="skill-group">
+                    <span class="skill-tag">ROS 2</span>
+                    <span class="skill-tag">C++</span>
+                    <span class="skill-tag">Python</span>
+                    <span class="skill-tag">PyTorch</span>
+                    <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">MoveIt</span>
+                    <span class="skill-tag">Nav2</span>
+                    <span class="skill-tag">Gazebo</span>
+                    <span class="skill-tag">SLAM</span>
+                    <span class="skill-tag">Embedded C</span>
+                    <span class="skill-tag">Linux CLI</span>
+                    <span class="skill-tag">Arduino/ESP32</span>
+                </div>
+            </section>
+        </main>
     </div>
 
 </body>
