@@ -209,13 +209,14 @@
                 <h2>Projects</h2>
 
                 <div class="project-item">
-                    <span class="date">Oct 2025 – Jan 2026</span>
-                    <h3>Phone2Act: End-to-End VLA Policy Learning</h3>
+                    <span class="date">Oct 2025 – Mar 2026</span>
+                    <h3>Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection</h3>
                     <span class="manuscript-tag">(Manuscript in preparation)</span>
-                    <p>Engineered a low-cost, hardware-agnostic teleoperation system using a custom mobile application with ARCore for 6-DoF tracking. The system achieves ~340ms latency with integrated safety features like pose-jump detection, formatting high-quality demonstration data to the LeRobot standard to fine-tune NVIDIA’s <strong>GR00T N1.5</strong> VLA model.</p>
+                    <p>Engineered a scalable, low-cost teleoperation framework addressing the data scarcity bottleneck in Vision-Language-Action (VLA) models. The system utilizes a custom Android application with ARCore to transform a commodity smartphone into a high-frequency (50Hz), 6-DoF spatial controller. Built on a modular ROS 2 architecture, it achieves an average end-to-end latency of ~395ms while integrating crucial safety features like a "Zero-Jump" filter (default 60mm) to prevent erratic robotic movements.</p>
                     <ul>
-                        <li><strong>Core Manipulation:</strong> Demonstrated a precise pick-and-place pipeline for sorting thermocol balls using a Dobot CR5 cobot, achieving an 80% success rate on the physical hardware.</li>
-                        <li><strong>Scalable Architecture:</strong> Designed a modular framework capable of supporting bimanual teleoperation on platforms like LeRobot SO-100 arms.</li>
+                        <li><strong>VLA-Ready Data Pipeline:</strong> Developed a Universal Recorder that synchronizes external RGB camera streams with 20Hz robot state feedback. The pipeline natively formats data into LeRobot standard (Parquet and MP4) and includes a shortest-path wrapping algorithm to ensure continuous Euler angles, eliminating massive numerical jumps during model training.</li>
+                        <li><strong>Model Fine-Tuning & Deployment:</strong> Collected a dataset of 150 episodes and successfully fine-tuned the NVIDIA GR00T N1.5 VLA model. Evaluated on a Dobot CR5, the model demonstrated robust real-world execution of a multi-stage task (picking up a thermocol ball and placing it in a purple basket), validating the high-fidelity of the smartphone-based trajectories.</li>
+                        <li><strong>Hardware Agnosticism & Bimanual Scaling:</strong> Designed interchangeable standard-to-specific bridge nodes to decouple control logic from specific robot hardware. Demonstrated system scalability by successfully deploying bimanual teleoperation on open-source, 3D-printed LeRobot SO-101 arms using two smartphones.</li>
                     </ul>
                     <div class="video-box">
                         <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
