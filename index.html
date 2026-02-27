@@ -7,9 +7,9 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <style>
         :root {
-            --bg-color: #1a1121; /* Dark purple from reference */
+            --bg-color: #1a1121;
             --sidebar-bg: #150d1a;
-            --accent-color: #d156b1; /* Highlight color */
+            --accent-color: #d156b1;
             --text-main: #e0e0e0;
             --text-dim: #b0b0b0;
         }
@@ -51,7 +51,7 @@
         /* Layout Container */
         .main-container {
             display: flex;
-            margin-top: 60px; /* Space for nav */
+            margin-top: 60px;
             max-width: 1200px;
             margin-left: auto;
             margin-right: auto;
@@ -99,6 +99,15 @@
         .exp-item, .project-item { margin-bottom: 30px; }
         .date { float: right; color: var(--text-dim); font-size: 0.9em; }
         
+        .manuscript-tag {
+            display: inline-block;
+            color: var(--accent-color);
+            font-style: italic;
+            font-size: 0.9em;
+            margin-top: -10px;
+            margin-bottom: 15px;
+        }
+        
         /* Video Embed Style */
         .video-box {
             position: relative;
@@ -116,10 +125,18 @@
         }
 
         ul { padding-left: 20px; color: var(--text-dim); }
-        li { margin-bottom: 8px; }
+        li { margin-bottom: 8px; line-height: 1.5; }
 
-        .skill-group { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 10px; }
-        .skill-tag { background: #332340; padding: 5px 12px; border-radius: 4px; font-size: 0.85em; }
+        /* Skills Styles */
+        .skill-category { 
+            font-size: 1.1em; 
+            color: var(--text-main); 
+            margin-top: 25px; 
+            margin-bottom: 12px; 
+            font-weight: 600; 
+        }
+        .skill-group { display: flex; flex-wrap: wrap; gap: 10px; }
+        .skill-tag { background: #332340; padding: 6px 14px; border-radius: 4px; font-size: 0.85em; }
 
         @media (max-width: 900px) {
             .main-container { flex-direction: column; }
@@ -153,17 +170,17 @@
 
         <main>
             <section id="about">
-    <h2>About Me</h2>
-    <p>
-        I’m Om Mandhane, a <strong>Robotics Engineering Student</strong> passionate about <strong>Embodied AI</strong> and <strong>Robot Learning</strong>. 
-        My recent work focuses on the <strong>fine-tuning and deployment</strong> of end-to-end VLA policies for robotic manipulation, supported by custom 
-        low-cost teleoperation systems I engineered for efficient data collection.
-    </p>
-    <p>
-        I am particularly interested in leveraging <strong>World Models</strong>, foundation models, and diffusion policies to create robots that can 
-        simulate and understand the physical world to perform complex, generalizable tasks.
-    </p>
-</section>
+                <h2>About Me</h2>
+                <p>
+                    I’m Om Mandhane, a <strong>Robotics Engineering Student</strong> passionate about <strong>Embodied AI</strong> and <strong>Robot Learning</strong>. 
+                    My recent work focuses on the <strong>fine-tuning and deployment</strong> of end-to-end VLA policies for robotic manipulation, supported by custom 
+                    low-cost teleoperation systems I engineered for efficient data collection.
+                </p>
+                <p>
+                    I am particularly interested in leveraging <strong>World Models</strong>, foundation models, and diffusion policies to create robots that can 
+                    simulate and understand the physical world to perform complex, generalizable tasks.
+                </p>
+            </section>
 
             <section id="experience">
                 <h2>Experience</h2>
@@ -193,8 +210,13 @@
 
                 <div class="project-item">
                     <span class="date">Oct 2025 – Jan 2026</span>
-                    <h3>End-to-End VLA Policy Learning</h3>
-                    <p>Developed a 6-DoF teleoperation system using mobile IMU sensors to fine-tune NVIDIA’s <strong>GR00T N1.5</strong> VLA model.</p>
+                    <h3>Phone2Act: End-to-End VLA Policy Learning</h3>
+                    <span class="manuscript-tag">(Manuscript in preparation)</span>
+                    <p>Engineered a low-cost, hardware-agnostic teleoperation system using a custom mobile application with ARCore for 6-DoF tracking. The system achieves ~340ms latency with integrated safety features like pose-jump detection, formatting high-quality demonstration data to the LeRobot standard to fine-tune NVIDIA’s <strong>GR00T N1.5</strong> VLA model.</p>
+                    <ul>
+                        <li><strong>Core Manipulation:</strong> Demonstrated a precise pick-and-place pipeline for sorting thermocol balls using a Dobot CR5 cobot, achieving an 80% success rate on the physical hardware.</li>
+                        <li><strong>Scalable Architecture:</strong> Designed a modular framework capable of supporting bimanual teleoperation on platforms like LeRobot SO-100 arms.</li>
+                    </ul>
                     <div class="video-box">
                         <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
                     </div>
@@ -239,19 +261,57 @@
 
             <section id="skills">
                 <h2>Skills</h2>
+                
+                <h3 class="skill-category">Languages & Libraries</h3>
                 <div class="skill-group">
-                    <span class="skill-tag">ROS 2</span>
                     <span class="skill-tag">C++</span>
                     <span class="skill-tag">Python</span>
+                    <span class="skill-tag">Embedded C</span>
                     <span class="skill-tag">PyTorch</span>
                     <span class="skill-tag">TensorFlow</span>
+                    <span class="skill-tag">OpenCV</span>
+                    <span class="skill-tag">YOLO</span>
+                    <span class="skill-tag">NumPy</span>
+                    <span class="skill-tag">Pandas</span>
+                    <span class="skill-tag">scikit-learn</span>
+                </div>
+
+                <h3 class="skill-category">Robotics & Control</h3>
+                <div class="skill-group">
+                    <span class="skill-tag">ROS 2</span>
                     <span class="skill-tag">MoveIt</span>
                     <span class="skill-tag">Nav2</span>
+                    <span class="skill-tag">SLAM-Toolbox</span>
                     <span class="skill-tag">Gazebo</span>
-                    <span class="skill-tag">SLAM</span>
-                    <span class="skill-tag">Embedded C</span>
+                    <span class="skill-tag">Path Planning</span>
+                    <span class="skill-tag">PID</span>
+                </div>
+
+                <h3 class="skill-category">Deep Learning</h3>
+                <div class="skill-group">
+                    <span class="skill-tag">CNNs</span>
+                    <span class="skill-tag">Transfer Learning</span>
+                    <span class="skill-tag">Diffusion Models (DDPM)</span>
+                    <span class="skill-tag">Vision-Language Action Models (VLAs)</span>
+                </div>
+
+                <h3 class="skill-category">Tools</h3>
+                <div class="skill-group">
+                    <span class="skill-tag">Git</span>
+                    <span class="skill-tag">GitHub</span>
+                    <span class="skill-tag">Google Colab</span>
+                    <span class="skill-tag">Jupyter</span>
+                    <span class="skill-tag">VSCode</span>
                     <span class="skill-tag">Linux CLI</span>
-                    <span class="skill-tag">Arduino/ESP32</span>
+                    <span class="skill-tag">MATLAB</span>
+                    <span class="skill-tag">Simulink</span>
+                </div>
+
+                <h3 class="skill-category">Hardware</h3>
+                <div class="skill-group">
+                    <span class="skill-tag">Arduino</span>
+                    <span class="skill-tag">ESP32</span>
+                    <span class="skill-tag">Raspberry Pi</span>
                 </div>
             </section>
         </main>
