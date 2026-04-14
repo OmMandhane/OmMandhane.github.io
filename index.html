@@ -87,6 +87,20 @@
 
         .social-links a i { margin-right: 10px; width: 15px; }
 
+        /* Tracker styling */
+        .visitor-tracker {
+            margin-top: 40px;
+            border-top: 1px solid #333;
+            padding-top: 20px;
+        }
+
+        .visitor-tracker span {
+            display: block;
+            color: var(--text-dim);
+            font-size: 0.85em;
+            margin-bottom: 10px;
+        }
+
         /* Main Content */
         main {
             flex: 1;
@@ -105,7 +119,29 @@
             font-style: italic;
             font-size: 0.9em;
             margin-top: -10px;
+            margin-bottom: 8px;
+        }
+
+        /* Added Styling for Project External Links */
+        .project-links {
             margin-bottom: 15px;
+        }
+        
+        .project-links a {
+            display: inline-block;
+            background-color: #332340;
+            color: var(--text-main);
+            text-decoration: none;
+            font-size: 0.85em;
+            padding: 5px 12px;
+            border-radius: 4px;
+            margin-right: 10px;
+            transition: 0.3s;
+        }
+        
+        .project-links a:hover {
+            background-color: var(--accent-color);
+            color: #fff;
         }
         
         /* Video Embed Style */
@@ -166,6 +202,11 @@
                 <a href="https://www.linkedin.com/in/ommandhane/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
                 <a href="https://github.com/OmMandhane" target="_blank"><i class="fab fa-github"></i> GitHub</a>
             </div>
+
+            <div class="visitor-tracker">
+                <span>Visitor Map</span>
+                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=9x1SdBaXKE3nlKqhZlLqc_DZmMlEBUuYLec_PCyEZec"></script>
+            </div>
         </aside>
 
         <main>
@@ -211,7 +252,13 @@
                 <div class="project-item">
                     <span class="date">Oct 2025 – Mar 2026</span>
                     <h3>Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection</h3>
-                    <span class="manuscript-tag">(Manuscript in preparation)</span>
+                    <span class="manuscript-tag">(Paper Submitted to IEEE/RSJ IROS 2026)</span>
+                    
+                    <div class="project-links">
+                        <a href="https://ommandhane.github.io/Phone2Act_Website/" target="_blank"><i class="fas fa-globe"></i> Project Website</a>
+                        <a href="https://github.com/OmMandhane/Phone2Act" target="_blank"><i class="fab fa-github"></i> Code</a>
+                    </div>
+
                     <p>Engineered a scalable, low-cost teleoperation framework addressing the data scarcity bottleneck in Vision-Language-Action (VLA) models. The system utilizes a custom Android application with ARCore to transform a commodity smartphone into a high-frequency (50Hz), 6-DoF spatial controller. Built on a modular ROS 2 architecture, it achieves an average end-to-end latency of ~395ms while integrating crucial safety features like a "Zero-Jump" filter (default 60mm) to prevent erratic robotic movements.</p>
                     <ul>
                         <li><strong>VLA-Ready Data Pipeline:</strong> Developed a Universal Recorder that synchronizes external RGB camera streams with 20Hz robot state feedback. The pipeline natively formats data into LeRobot standard (Parquet and MP4) and includes a shortest-path wrapping algorithm to ensure continuous Euler angles, eliminating massive numerical jumps during model training.</li>
