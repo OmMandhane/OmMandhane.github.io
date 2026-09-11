@@ -70,8 +70,10 @@
   .mark-box .fill{
     position:absolute; inset:10px;
     background:var(--paper-raised);
-    display:flex; align-items:center; justify-content:center;
-    font-family:'Newsreader', serif; font-size:2.6em; font-weight:500; color:var(--accent-ink);
+    display:block; overflow:hidden;
+  }
+  .mark-box .fill img{
+    width:100%; height:100%; object-fit:cover; display:block;
   }
   .mark-box .corner{position:absolute; width:20px; height:20px; border-color:var(--ink); }
   .mark-box .corner.tl{top:0; left:0; border-top:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
@@ -204,7 +206,7 @@
       <div class="mark-box">
         <span class="corner tl"></span><span class="corner tr"></span>
         <span class="corner bl"></span><span class="corner br"></span>
-        <div class="fill">OM</div>
+        <div class="fill"><img src="profile.jpeg" alt="Om Mandhane"></div>
       </div>
       <div>
         <h1>Om Mandhane</h1>
