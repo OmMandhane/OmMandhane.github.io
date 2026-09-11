@@ -1,369 +1,553 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Om Mandhane | Robotics & AI Portfolio</title>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <style>
-        :root {
-            --bg-color: #1a1121;
-            --sidebar-bg: #150d1a;
-            --accent-color: #d156b1;
-            --text-main: #e0e0e0;
-            --text-dim: #b0b0b0;
-        }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Om Mandhane — Robotics &amp; Embodied AI</title>
+<meta name="description" content="Om Mandhane — robotics engineer working toward generalist, command-driven robots through world models, VLA, and reinforcement learning.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Newsreader:ital,opsz,wght@0,6..72,400;0,6..72,500;0,6..72,600;1,6..72,400;1,6..72,500&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --paper:#f6f4ee;
+    --paper-raised:#fbfaf6;
+    --ink:#191a17;
+    --ink-soft:#54544c;
+    --ink-faint:#8b897e;
+    --line:#dcd8cb;
+    --accent:#0d6e6b;
+    --accent-ink:#08423f;
+    --accent-wash:#e4efed;
+    --amber:#a5641f;
+    --max:760px;
+    --wide:1040px;
+  }
 
-        body {
-            font-family: 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-            background-color: var(--bg-color);
-            color: var(--text-main);
-            margin: 0;
-            display: flex;
-            flex-direction: column;
-        }
+  *{box-sizing:border-box;}
+  html{scroll-behavior:smooth;}
+  @media (prefers-reduced-motion: reduce){ html{scroll-behavior:auto;} *{animation-duration:0.001ms !important; transition-duration:0.001ms !important;} }
 
-        /* Top Navigation Bar */
-        nav {
-            background-color: var(--sidebar-bg);
-            padding: 15px 50px;
-            position: fixed;
-            width: 100%;
-            top: 0;
-            z-index: 1000;
-            display: flex;
-            gap: 25px;
-            border-bottom: 1px solid #333;
-        }
+  body{
+    margin:0;
+    background:var(--paper);
+    color:var(--ink);
+    font-family:'IBM Plex Sans', system-ui, sans-serif;
+    font-size:16.5px;
+    line-height:1.6;
+    -webkit-font-smoothing:antialiased;
+  }
 
-        nav a {
-            color: var(--text-dim);
-            text-decoration: none;
-            font-size: 0.9em;
-            font-weight: 500;
-            transition: 0.3s;
-        }
+  a{color:var(--accent-ink); text-decoration-color:var(--line); text-underline-offset:3px;}
+  a:hover{text-decoration-color:var(--accent);}
+  a:focus-visible, button:focus-visible{outline:2px solid var(--accent); outline-offset:3px;}
 
-        nav a:hover {
-            color: var(--accent-color);
-        }
+  h1,h2,h3{font-family:'Newsreader', Georgia, serif; font-weight:500; margin:0; color:var(--ink);}
 
-        /* Layout Container */
-        .main-container {
-            display: flex;
-            margin-top: 60px;
-            max-width: 1200px;
-            margin-left: auto;
-            margin-right: auto;
-            padding: 40px 20px;
-        }
+  .wrap{max-width:var(--wide); margin:0 auto; padding:0 32px;}
 
-        /* Left Sidebar */
-        aside {
-            width: 280px;
-            position: sticky;
-            top: 100px;
-            height: fit-content;
-            padding-right: 40px;
-        }
+  /* ---------- Nav ---------- */
+  header.site-nav{
+    position:sticky; top:0; z-index:50;
+    background:rgba(246,244,238,0.92);
+    backdrop-filter:none;
+    border-bottom:1px solid var(--line);
+  }
+  .nav-row{
+    max-width:var(--wide); margin:0 auto; padding:16px 32px;
+    display:flex; align-items:baseline; justify-content:space-between; gap:24px;
+  }
+  .nav-mark{font-family:'Newsreader', serif; font-size:1.05em; font-weight:500; text-decoration:none; color:var(--ink); white-space:nowrap;}
+  .nav-links{display:flex; gap:22px; flex-wrap:wrap;}
+  .nav-links a{font-size:0.92em; color:var(--ink-soft); text-decoration:none; border-bottom:1px solid transparent;}
+  .nav-links a:hover{color:var(--ink); border-bottom-color:var(--ink-soft);}
 
-        .profile-pic {
-            width: 100%;
-            border-radius: 8px;
-            margin-bottom: 20px;
-            filter: grayscale(10%);
-        }
+  /* ---------- Hero ---------- */
+  .hero{padding:72px 0 56px;}
+  .hero-grid{display:grid; grid-template-columns:132px 1fr; gap:44px; align-items:start;}
 
-        aside h1 { font-size: 1.8em; margin: 10px 0; }
-        .title-sub { color: var(--accent-color); font-size: 0.95em; margin-bottom: 20px; display: block; }
+  .mark-box{position:relative; width:132px; height:132px;}
+  .mark-box .fill{
+    position:absolute; inset:10px;
+    background:var(--paper-raised);
+    display:flex; align-items:center; justify-content:center;
+    font-family:'Newsreader', serif; font-size:2.6em; font-weight:500; color:var(--accent-ink);
+  }
+  .mark-box .corner{position:absolute; width:20px; height:20px; border-color:var(--ink); }
+  .mark-box .corner.tl{top:0; left:0; border-top:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
+  .mark-box .corner.tr{top:0; right:0; border-top:1.5px solid var(--ink); border-right:1.5px solid var(--ink);}
+  .mark-box .corner.bl{bottom:0; left:0; border-bottom:1.5px solid var(--ink); border-left:1.5px solid var(--ink);}
+  .mark-box .corner.br{bottom:0; right:0; border-bottom:1.5px solid var(--ink); border-right:1.5px solid var(--ink);}
 
-        .social-links a {
-            display: block;
-            color: var(--text-dim);
-            text-decoration: none;
-            margin-bottom: 10px;
-            font-size: 0.9em;
-        }
+  .hero h1{font-size:2.6em; letter-spacing:-0.01em; line-height:1.1;}
+  .hero .role{font-size:1.05em; color:var(--accent-ink); margin-top:8px; font-weight:500;}
+  .hero p.bio{max-width:640px; margin-top:20px; color:var(--ink-soft); font-size:1.02em;}
+  .hero .contact-row{margin-top:24px; display:flex; flex-wrap:wrap; gap:18px 26px;}
+  .hero .contact-row a{font-size:0.94em; color:var(--ink); text-decoration:none; padding-bottom:2px; border-bottom:1px solid var(--line);}
+  .hero .contact-row a:hover{border-bottom-color:var(--accent); color:var(--accent-ink);}
 
-        .social-links a i { margin-right: 10px; width: 15px; }
+  /* ---------- Section shell ---------- */
+  section{padding:52px 0; border-top:1px solid var(--line);}
+  .sec-head{display:grid; grid-template-columns:180px 1fr; gap:44px; margin-bottom:28px;}
+  .sec-head h2{font-size:1.5em;}
+  .sec-head .tag{
+    font-family:'IBM Plex Mono', monospace; font-size:0.72em; letter-spacing:0.02em;
+    color:var(--ink-faint); align-self:start; padding-top:6px;
+  }
+  .sec-body{display:grid; grid-template-columns:180px 1fr; gap:44px;}
+  .sec-body .prose{max-width:var(--max); color:var(--ink-soft);}
+  .sec-body .prose p{margin:0 0 14px;}
+  .sec-body .side{font-family:'IBM Plex Mono', monospace; font-size:0.78em; color:var(--ink-faint); line-height:1.7;}
 
-        /* Tracker styling */
-        .visitor-tracker {
-            margin-top: 40px;
-            border-top: 1px solid #333;
-            padding-top: 20px;
-        }
+  /* interest chips */
+  .interest-list{list-style:none; margin:18px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:10px;}
+  .interest-list li{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78em;
+    background:var(--accent-wash); color:var(--accent-ink);
+    padding:6px 11px; border-radius:2px; border:1px solid #cfe3e0;
+  }
 
-        .visitor-tracker span {
-            display: block;
-            color: var(--text-dim);
-            font-size: 0.85em;
-            margin-bottom: 10px;
-        }
+  /* ---------- Publications ---------- */
+  .pub{display:grid; grid-template-columns:180px 1fr; gap:44px; padding:22px 0; border-top:1px solid var(--line);}
+  .pub:first-of-type{border-top:none; padding-top:0;}
+  .pub .status{font-family:'IBM Plex Mono', monospace; font-size:0.72em; color:var(--ink-faint);}
+  .pub .status span{display:inline-block; margin-top:2px; color:var(--amber);}
+  .pub h3{font-size:1.12em; font-weight:500; line-height:1.4;}
+  .pub .authors{color:var(--ink-soft); font-size:0.92em; margin-top:6px;}
+  .pub .authors strong{color:var(--ink); font-weight:600;}
+  .pub .venue{color:var(--ink-faint); font-size:0.88em; margin-top:4px;}
+  .pub .links{margin-top:10px; display:flex; gap:16px;}
+  .pub .links a{font-size:0.85em;}
 
-        /* Main Content */
-        main {
-            flex: 1;
-            padding-left: 20px;
-        }
+  /* ---------- Experience ---------- */
+  .xp{display:grid; grid-template-columns:180px 1fr; gap:44px; padding:26px 0; border-top:1px solid var(--line);}
+  .xp:first-of-type{border-top:none; padding-top:0;}
+  .xp .when{font-family:'IBM Plex Mono', monospace; font-size:0.78em; color:var(--ink-faint); padding-top:3px;}
+  .xp h3{font-size:1.14em;}
+  .xp .org{color:var(--accent-ink); font-size:0.95em; margin-top:3px; font-weight:500;}
+  .xp ul{margin:12px 0 0; padding-left:18px; color:var(--ink-soft);}
+  .xp li{margin-bottom:7px; font-size:0.96em;}
 
-        section { margin-bottom: 60px; scroll-margin-top: 100px; }
-        h2 { border-bottom: 1px solid #333; padding-bottom: 10px; margin-bottom: 25px; font-size: 1.5em; }
+  /* ---------- Projects ---------- */
+  .proj{display:grid; grid-template-columns:180px 1fr; gap:44px; padding:34px 0; border-top:1px solid var(--line);}
+  .proj:first-of-type{border-top:none; padding-top:0;}
+  .proj .when{font-family:'IBM Plex Mono', monospace; font-size:0.78em; color:var(--ink-faint); padding-top:3px;}
+  .proj h3{font-size:1.2em; line-height:1.35;}
+  .proj .desc{color:var(--ink-soft); margin-top:10px; max-width:var(--max); font-size:0.97em;}
+  .proj ul{margin:12px 0 0; padding-left:18px; color:var(--ink-soft); max-width:var(--max);}
+  .proj li{margin-bottom:7px; font-size:0.95em;}
+  .proj .links{margin-top:14px; display:flex; gap:16px;}
+  .proj .links a{font-size:0.85em;}
+  .media{margin-top:18px; position:relative; padding-bottom:52%; height:0; overflow:hidden; background:#111; max-width:640px; border:1px solid var(--line);}
+  .media iframe{position:absolute; inset:0; width:100%; height:100%; border:0;}
 
-        .exp-item, .project-item { margin-bottom: 30px; }
-        .date { float: right; color: var(--text-dim); font-size: 0.9em; }
-        
-        .manuscript-tag {
-            display: inline-block;
-            color: var(--accent-color);
-            font-style: italic;
-            font-size: 0.9em;
-            margin-top: -10px;
-            margin-bottom: 8px;
-        }
+  /* ---------- Awards ---------- */
+  .awards-list{list-style:none; margin:0; padding:0; max-width:var(--max);}
+  .awards-list li{
+    display:grid; grid-template-columns:90px 1fr; gap:18px;
+    padding:13px 0; border-top:1px solid var(--line); color:var(--ink-soft); font-size:0.96em;
+  }
+  .awards-list li:first-child{border-top:none;}
+  .awards-list li .yr{font-family:'IBM Plex Mono', monospace; font-size:0.78em; color:var(--ink-faint); padding-top:2px;}
+  .awards-list li strong{color:var(--ink); font-weight:600;}
 
-        /* Added Styling for Project External Links */
-        .project-links {
-            margin-bottom: 15px;
-        }
-        
-        .project-links a {
-            display: inline-block;
-            background-color: #332340;
-            color: var(--text-main);
-            text-decoration: none;
-            font-size: 0.85em;
-            padding: 5px 12px;
-            border-radius: 4px;
-            margin-right: 10px;
-            transition: 0.3s;
-        }
-        
-        .project-links a:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-        }
-        
-        /* Video Embed Style */
-        .video-box {
-            position: relative;
-            padding-bottom: 56.25%;
-            height: 0;
-            overflow: hidden;
-            border-radius: 8px;
-            margin-top: 15px;
-            background: #000;
-        }
+  /* ---------- Skills ---------- */
+  .skill-block{margin-bottom:22px;}
+  .skill-block:last-child{margin-bottom:0;}
+  .skill-block h4{font-family:'IBM Plex Sans',sans-serif; font-weight:600; font-size:0.85em; color:var(--ink-faint); margin:0 0 10px; text-transform:none;}
+  .skill-tags{display:flex; flex-wrap:wrap; gap:8px;}
+  .skill-tags span{
+    font-family:'IBM Plex Mono', monospace; font-size:0.78em;
+    border:1px solid var(--line); background:var(--paper-raised);
+    padding:5px 10px; color:var(--ink-soft);
+  }
 
-        .video-box iframe {
-            position: absolute;
-            top: 0; left: 0; width: 100%; height: 100%;
-        }
+  /* ---------- Footer ---------- */
+  footer{border-top:1px solid var(--line); padding:40px 0 56px;}
+  footer .foot-grid{display:grid; grid-template-columns:180px 1fr; gap:44px; align-items:start;}
+  footer p{color:var(--ink-soft); font-size:0.92em; margin:0 0 6px; max-width:var(--max);}
+  footer .foot-links{display:flex; flex-wrap:wrap; gap:18px 24px; margin-top:14px;}
+  footer .foot-links a{font-size:0.9em;}
+  footer .updated{font-family:'IBM Plex Mono', monospace; font-size:0.7em; color:var(--ink-faint); margin-top:20px;}
 
-        ul { padding-left: 20px; color: var(--text-dim); }
-        li { margin-bottom: 8px; line-height: 1.5; }
-
-        /* Skills Styles */
-        .skill-category { 
-            font-size: 1.1em; 
-            color: var(--text-main); 
-            margin-top: 25px; 
-            margin-bottom: 12px; 
-            font-weight: 600; 
-        }
-        .skill-group { display: flex; flex-wrap: wrap; gap: 10px; }
-        .skill-tag { background: #332340; padding: 6px 14px; border-radius: 4px; font-size: 0.85em; }
-
-        @media (max-width: 900px) {
-            .main-container { flex-direction: column; }
-            aside { width: 100%; position: static; padding-right: 0; margin-bottom: 40px; }
-            nav { padding: 15px 20px; overflow-x: auto; }
-        }
-    </style>
+  @media (max-width:760px){
+    .wrap, .nav-row{padding-left:20px; padding-right:20px;}
+    .hero-grid, .sec-head, .sec-body, .pub, .xp, .proj, footer .foot-grid{grid-template-columns:1fr;}
+    .sec-head .tag{padding-top:0; margin-bottom:-10px;}
+    .mark-box{width:96px; height:96px;}
+    .hero h1{font-size:2.05em;}
+    .nav-links{gap:14px 16px;}
+  }
+</style>
 </head>
 <body>
 
-    <nav>
-        <a href="#about">About Me</a>
-        <a href="#experience">Experience</a>
-        <a href="#projects">Projects</a>
-        <a href="#awards">Honors and Awards</a>
-        <a href="#skills">Skills</a>
+<header class="site-nav">
+  <div class="nav-row">
+    <a class="nav-mark" href="#top">Om Mandhane</a>
+    <nav class="nav-links">
+      <a href="#interests">Research</a>
+      <a href="#publications">Publications</a>
+      <a href="#experience">Experience</a>
+      <a href="#projects">Projects</a>
+      <a href="#awards">Awards</a>
+      <a href="#contact">Contact</a>
     </nav>
+  </div>
+</header>
 
-    <div class="main-container">
-        <aside>
-            <img src="profile.jpeg" alt="Om Mandhane" class="profile-pic">
-            <h1>Om Mandhane</h1>
-            <span class="title-sub">Robotics Student @ VESIT | Embodied AI & VLA</span>
-            
-            <div class="social-links">
-                <a href="mailto:ommandhane27@gmail.com"><i class="fas fa-envelope"></i> Email</a>
-                <a href="https://www.linkedin.com/in/ommandhane/" target="_blank"><i class="fab fa-linkedin"></i> LinkedIn</a>
-                <a href="https://github.com/OmMandhane" target="_blank"><i class="fab fa-github"></i> GitHub</a>
-            </div>
+<main id="top">
 
-            <div class="visitor-tracker">
-                <span>Visitor Map</span>
-                <script type="text/javascript" id="clstr_globe" src="//clustrmaps.com/globe.js?d=9x1SdBaXKE3nlKqhZlLqc_DZmMlEBUuYLec_PCyEZec"></script>
-            </div>
-        </aside>
-
-        <main>
-            <section id="about">
-                <h2>About Me</h2>
-                <p>
-                    I’m Om Mandhane, a <strong>Robotics Engineering Student</strong> passionate about <strong>Embodied AI</strong> and <strong>Robot Learning</strong>. 
-                    My recent work focuses on the <strong>fine-tuning and deployment</strong> of end-to-end VLA policies for robotic manipulation, supported by custom 
-                    low-cost teleoperation systems I engineered for efficient data collection.
-                </p>
-                <p>
-                    I am particularly interested in leveraging <strong>World Models</strong>, foundation models, and diffusion policies to create robots that can 
-                    simulate and understand the physical world to perform complex, generalizable tasks.
-                </p>
-            </section>
-
-            <section id="experience">
-                <h2>Experience</h2>
-                
-                <div class="exp-item">
-                    <span class="date">Dec 2024 – Mar 2025</span>
-                    <h3>Bhabha Atomic Research Centre (BARC)</h3>
-                    <p><em>Project Intern</em></p>
-                    <ul>
-                        <li>Developed a ROS2 software stack for a custom indoor mobile robot, including URDF creation and Gazebo simulation.</li>
-                        <li>Optimized the VFH algorithm for dynamic object avoidance and real-time navigation.</li>
-                    </ul>
-                </div>
-
-                <div class="exp-item">
-                    <span class="date">2024 – 2025</span>
-                    <h3>Technical Instructor</h3>
-                    <p><em>ISA VESIT</em></p>
-                    <ul>
-                        <li>Led multiple 3-day workshops on ROS 2 and Gazebo for undergraduate students.</li>
-                    </ul>
-                </div>
-            </section>
-
-            <section id="projects">
-                <h2>Projects</h2>
-
-                <div class="project-item">
-                    <span class="date">Oct 2025 – Mar 2026</span>
-                    <h3>Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection</h3>
-                    <span class="manuscript-tag">(Paper Submitted to IEEE/RSJ IROS 2026)</span>
-                    
-                    <div class="project-links">
-                        <a href="https://ommandhane.github.io/Phone2Act_Website/" target="_blank"><i class="fas fa-globe"></i> Project Website</a>
-                        <a href="https://github.com/OmMandhane/Phone2Act" target="_blank"><i class="fab fa-github"></i> Code</a>
-                    </div>
-
-                    <p>Engineered a scalable, low-cost teleoperation framework addressing the data scarcity bottleneck in Vision-Language-Action (VLA) models. The system utilizes a custom Android application with ARCore to transform a commodity smartphone into a high-frequency (50Hz), 6-DoF spatial controller. Built on a modular ROS 2 architecture, it achieves an average end-to-end latency of ~395ms while integrating crucial safety features like a "Zero-Jump" filter (default 60mm) to prevent erratic robotic movements.</p>
-                    <ul>
-                        <li><strong>VLA-Ready Data Pipeline:</strong> Developed a Universal Recorder that synchronizes external RGB camera streams with 20Hz robot state feedback. The pipeline natively formats data into LeRobot standard (Parquet and MP4) and includes a shortest-path wrapping algorithm to ensure continuous Euler angles, eliminating massive numerical jumps during model training.</li>
-                        <li><strong>Model Fine-Tuning & Deployment:</strong> Collected a dataset of 150 episodes and successfully fine-tuned the NVIDIA GR00T N1.5 VLA model. Evaluated on a Dobot CR5, the model demonstrated robust real-world execution of a multi-stage task (picking up a thermocol ball and placing it in a purple basket), validating the high-fidelity of the smartphone-based trajectories.</li>
-                        <li><strong>Hardware Agnosticism & Bimanual Scaling:</strong> Designed interchangeable standard-to-specific bridge nodes to decouple control logic from specific robot hardware. Demonstrated system scalability by successfully deploying bimanual teleoperation on open-source, 3D-printed LeRobot SO-101 arms using two smartphones.</li>
-                    </ul>
-                    <div class="video-box">
-                        <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <span class="date">Sep 2024 – Mar 2025</span>
-                    <h3>HexBot: SLAM & Navigation</h3>
-                    <p>A ROS-based differential drive robot using SLAM Toolbox and Nav2. Supports remote control via VR headset and joystick.</p>
-                    <div class="video-box">
-                        <iframe src="https://www.youtube.com/embed/tKs1At_50i4" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3>Warehouse Drone (IIT Bombay e-Yantra)</h3>
-                    <p>Autonomous drone system in Gazebo utilizing RRT* path planning and computer vision for package recognition.</p>
-                    <div class="video-box">
-                        <iframe src="https://www.youtube.com/embed/d_QmQpVg4uA" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-
-                <div class="project-item">
-                    <h3>GeoGuide</h3>
-                    <p>Autonomous robot using AlexNet for image classification and Dijkstra's algorithm for path planning in disaster scenarios.</p>
-                    <div class="video-box">
-                        <iframe src="https://www.youtube.com/embed/GSNIV37t3kY" frameborder="0" allowfullscreen></iframe>
-                    </div>
-                </div>
-            </section>
-
-            <section id="awards">
-                <h2>Honors and Awards</h2>
-                <ul>
-                    <li><strong>ISA General Education Endowment Scholarship ($2,000)</strong> — 2025</li>
-                    <li><strong>Stage 2 Qualifier</strong>, IIT Bombay e-Yantra Robotics Competition — 2023–25</li>
-                    <li><strong>Tecnimont (MAIRE) Scholarship</strong> for academic excellence — 2024–25</li>
-                    <li><strong>Qualified Prototype Stage</strong>, Vishwakarma Awards 2025</li>
-                    <li><strong>7th Place</strong>, India Automation Games — 2024</li>
-                </ul>
-            </section>
-
-            <section id="skills">
-                <h2>Skills</h2>
-                
-                <h3 class="skill-category">Languages & Libraries</h3>
-                <div class="skill-group">
-                    <span class="skill-tag">C++</span>
-                    <span class="skill-tag">Python</span>
-                    <span class="skill-tag">Embedded C</span>
-                    <span class="skill-tag">PyTorch</span>
-                    <span class="skill-tag">TensorFlow</span>
-                    <span class="skill-tag">OpenCV</span>
-                    <span class="skill-tag">YOLO</span>
-                    <span class="skill-tag">NumPy</span>
-                    <span class="skill-tag">Pandas</span>
-                    <span class="skill-tag">scikit-learn</span>
-                </div>
-
-                <h3 class="skill-category">Robotics & Control</h3>
-                <div class="skill-group">
-                    <span class="skill-tag">ROS 2</span>
-                    <span class="skill-tag">MoveIt</span>
-                    <span class="skill-tag">Nav2</span>
-                    <span class="skill-tag">SLAM-Toolbox</span>
-                    <span class="skill-tag">Gazebo</span>
-                    <span class="skill-tag">Path Planning</span>
-                    <span class="skill-tag">PID</span>
-                </div>
-
-                <h3 class="skill-category">Deep Learning</h3>
-                <div class="skill-group">
-                    <span class="skill-tag">CNNs</span>
-                    <span class="skill-tag">Transfer Learning</span>
-                    <span class="skill-tag">Diffusion Models (DDPM)</span>
-                    <span class="skill-tag">Vision-Language Action Models (VLAs)</span>
-                </div>
-
-                <h3 class="skill-category">Tools</h3>
-                <div class="skill-group">
-                    <span class="skill-tag">Git</span>
-                    <span class="skill-tag">GitHub</span>
-                    <span class="skill-tag">Google Colab</span>
-                    <span class="skill-tag">Jupyter</span>
-                    <span class="skill-tag">VSCode</span>
-                    <span class="skill-tag">Linux CLI</span>
-                    <span class="skill-tag">MATLAB</span>
-                    <span class="skill-tag">Simulink</span>
-                </div>
-
-                <h3 class="skill-category">Hardware</h3>
-                <div class="skill-group">
-                    <span class="skill-tag">Arduino</span>
-                    <span class="skill-tag">ESP32</span>
-                    <span class="skill-tag">Raspberry Pi</span>
-                </div>
-            </section>
-        </main>
+  <!-- HERO -->
+  <section class="hero" style="border-top:none;">
+    <div class="wrap hero-grid">
+      <div class="mark-box">
+        <span class="corner tl"></span><span class="corner tr"></span>
+        <span class="corner bl"></span><span class="corner br"></span>
+        <div class="fill">OM</div>
+      </div>
+      <div>
+        <h1>Om Mandhane</h1>
+        <p class="role">Robotics engineer — embodied AI &amp; generalist robotics</p>
+        <p class="bio">
+          I want to build robots that can take a language instruction and carry it out reliably in the real world.
+          So far my work has focused on the perception and data side of that: fusing LiDAR and vision for
+          real-time navigation, and building low-cost teleoperation tools to collect the demonstrations that
+          VLA models are trained on. I have a B.E. in Automation &amp; Robotics, with a minor in AI &amp; ML,
+          from VESIT, Mumbai, and I'm looking to continue into a research-focused master's in world models, VLA,
+          and humanoid manipulation.
+        </p>
+        <div class="contact-row">
+          <a href="mailto:ommandhane27@gmail.com">Email</a>
+          <a href="https://github.com/OmMandhane" target="_blank" rel="noopener">GitHub</a>
+          <a href="https://www.linkedin.com/in/ommandhane/" target="_blank" rel="noopener">LinkedIn</a>
+          <a href="https://scholar.google.com/citations?user=An9--HkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+          <a href="Om_Mandhane_CV.pdf" target="_blank" rel="noopener">Download CV (PDF)</a>
+        </div>
+      </div>
     </div>
+  </section>
+
+  <!-- RESEARCH INTERESTS -->
+  <section id="interests">
+    <div class="wrap sec-head">
+      <span class="tag">[ 01 ]</span>
+      <h2>Research interests</h2>
+    </div>
+    <div class="wrap sec-body">
+      <div class="side">focus areas</div>
+      <div class="prose">
+        <p>
+          My research interest sits at the intersection of reinforcement learning, world models,
+          vision-language-action (VLA) models, and humanoid manipulation. I'm interested in generalist
+          manipulation policies that anticipate the consequences of their actions rather than only reacting —
+          using a predictive world model to imagine how a scene and its objects will change before an action is
+          taken, and correcting behavior against new observations as they come in. This matters most for humanoid
+          robots, where manipulation involves complex contacts and whole-body motion: I want to study whether
+          predictive world models can make VLA/RL policies more sample-efficient, more robust, and better at
+          generalizing to new tasks, particularly for bimanual and whole-body manipulation.
+        </p>
+        <ul class="interest-list" style="list-style:none; padding:0;">
+          <li>Reinforcement learning</li>
+          <li>World models</li>
+          <li>Vision-Language-Action models</li>
+          <li>Humanoid manipulation</li>
+          <li>Whole-body &amp; bimanual control</li>
+          <li>Generalist, command-driven policies</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- PUBLICATIONS -->
+  <section id="publications">
+    <div class="wrap sec-head">
+      <span class="tag">[ 02 ]</span>
+      <h2>Publications</h2>
+    </div>
+    <div class="wrap">
+
+      <div class="pub">
+        <div class="status">status<span>Submitted</span></div>
+        <div>
+          <h3>Robust 2D Traversability Mapping for Construction AMRs via Failure-Mode-Aware Fusion of LiDAR Geometry and Monocular Semantics</h3>
+          <p class="authors"><strong>Manoj Karnekar</strong>, Om Mandhane, Gautham Ramkumar</p>
+          <p class="venue">Submitted to the IEEE/RSJ IROS 2026 Workshop on Field &amp; Off-road Autonomy, via OpenReview</p>
+        </div>
+      </div>
+
+      <div class="pub">
+        <div class="status">status<span>Submitted</span></div>
+        <div>
+          <h3>Phone2Act: A Low-Cost, Hardware-Agnostic Teleoperation System for Scalable VLA Data Collection</h3>
+          <p class="authors"><strong>Om Mandhane</strong>, Bipin Yadav, Sangeetha Prasanna Ram, Gopalakrishnan Narayanan</p>
+          <p class="venue">Submitted to IEEE ICMRE</p>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2605.01948" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://ommandhane.github.io/Phone2Act_Website/" target="_blank" rel="noopener">Project page</a>
+            <a href="https://github.com/OmMandhane/Phone2Act" target="_blank" rel="noopener">Code</a>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- EXPERIENCE -->
+  <section id="experience">
+    <div class="wrap sec-head">
+      <span class="tag">[ 03 ]</span>
+      <h2>Experience</h2>
+    </div>
+    <div class="wrap">
+
+      <div class="xp">
+        <div class="when">Jun 2026 –<br>Aug 2026</div>
+        <div>
+          <h3>Robotics Engineering Intern</h3>
+          <div class="org">Flo Mobility, Bengaluru</div>
+          <ul>
+            <li>Evaluated and deployed monocular metric depth models (Metric3D v2, UniDepth) on an NVIDIA Jetson AGX Orin using ONNX and FP16 TensorRT, enabling real-time point cloud generation for a downstream navigation pipeline.</li>
+            <li>Built a real-time multimodal perception stack in ROS 2 fusing 3D Livox LiDAR geometry with a custom 28-class YOLOv26 segmentation model, including a failure-mode-aware deterministic fusion engine that mitigates geometric false positives (ramps) and false negatives (wet mud).</li>
+            <li>Built a SAM 3-assisted annotation workflow to curate a multimodal construction dataset.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="when">Dec 2024 –<br>Mar 2025</div>
+        <div>
+          <h3>Project Intern</h3>
+          <div class="org">Bhabha Atomic Research Centre (BARC)</div>
+          <ul>
+            <li>Developed a ROS 2 software stack for a custom indoor mobile robot, including URDF design, Gazebo simulation, and real-time hardware interfacing.</li>
+            <li>Integrated and tuned the Nav2 stack for autonomous navigation in simulation; implemented and optimized VFH for dynamic obstacle avoidance in simulation and on the real robot.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="when">Dec 2024 &amp;<br>Jun 2025</div>
+        <div>
+          <h3>Technical Instructor</h3>
+          <div class="org">ROS 2 &amp; Gazebo Workshop, ISA VESIT</div>
+          <ul>
+            <li>Led two 3-day workshops on ROS 2 and Gazebo for undergraduates, run during winter and summer breaks in collaboration with ISA VESIT.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="xp">
+        <div class="when">May 2024 –<br>Jul 2024</div>
+        <div>
+          <h3>Summer Intern</h3>
+          <div class="org">VESIT</div>
+          <ul>
+            <li>Built a ROS 2 UR5 manipulation pipeline in Gazebo using the TRAC-IK solver, with a custom C++ pose-input interface for command-line end-effector control.</li>
+          </ul>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- PROJECTS -->
+  <section id="projects">
+    <div class="wrap sec-head">
+      <span class="tag">[ 04 ]</span>
+      <h2>Projects</h2>
+    </div>
+    <div class="wrap">
+
+      <div class="proj">
+        <div class="when">Oct 2025 –<br>Mar 2026</div>
+        <div>
+          <h3>Phone2Act — hardware-agnostic teleoperation for VLA data collection</h3>
+          <p class="desc">
+            A low-cost 6-DoF teleoperation framework that turns a commodity smartphone into a spatial controller
+            via ARCore, built to address the demonstration-data bottleneck in vision-language-action robotics.
+          </p>
+          <ul>
+            <li>Modular three-layer ROS 2 architecture (interface, planner, hardware bridge) decoupled through standardized topics, with workspace clamping and a zero-jump safety filter for real-robot deployment.</li>
+            <li>Universal Recorder synchronizing multi-camera streams with 20Hz robot state, exporting directly to LeRobot dataset format (MP4/Parquet) — a turnkey pipeline from teleoperation to training.</li>
+            <li>Validated on single-arm (Dobot CR5) and bimanual (LeRobot SO-101) platforms at 395ms end-to-end latency; collected 130 episodes to fine-tune NVIDIA's GR00T-N1.5-3B diffusion policy with 10-step temporal action chunking, deployed via a cloud-based inference bridge.</li>
+          </ul>
+          <div class="links">
+            <a href="https://arxiv.org/abs/2605.01948" target="_blank" rel="noopener">arXiv</a>
+            <a href="https://ommandhane.github.io/Phone2Act_Website/" target="_blank" rel="noopener">Project page</a>
+            <a href="https://github.com/OmMandhane/Phone2Act" target="_blank" rel="noopener">Code</a>
+          </div>
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/euHJPPA9LWs" title="Phone2Act demo" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="when">Apr 2026 –<br>May 2026</div>
+        <div>
+          <h3>Autonomous navigation with model predictive control</h3>
+          <p class="desc">
+            A real-time ROS 2 local planner solving a receding-horizon optimization problem with CasADi/IPOPT
+            under unicycle kinematic constraints, so every planned trajectory is physically executable.
+          </p>
+          <ul>
+            <li>Dynamic obstacle avoidance via an inverse-barrier cost function over downsampled 2D LiDAR scans mapped into repulsive potential fields.</li>
+            <li>Sparse waypoints pre-processed into C²-continuous reference paths with SciPy cubic B-splines, plus a monotonic progress tracker to prevent path-jumping on sharp hairpin maneuvers.</li>
+            <li>A cruise-control cost function to penalize deceleration and keep forward progress, with solver warm-starting inertia to eliminate saddle-point oscillations.</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/OmMandhane/MPC_turtlebot" target="_blank" rel="noopener">Code</a>
+          </div>
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/H7ytGX5dO64" title="MPC path-tracking demo" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="when">Sep 2024 –<br>Mar 2025</div>
+        <div>
+          <h3>HexBot — SLAM &amp; navigation</h3>
+          <p class="desc">
+            A ROS 2 differential-drive robot using SLAM Toolbox for real-time mapping and Nav2 for path planning,
+            with a VR-based streaming interface for remote monitoring.
+          </p>
+          <div class="links">
+            <a href="https://github.com/OmMandhane/SlamBot" target="_blank" rel="noopener">Code</a>
+          </div>
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/tKs1At_50i4" title="HexBot demo" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="when">Sep 2024 –<br>Feb 2025</div>
+        <div>
+          <h3>Warehouse drone</h3>
+          <p class="desc">
+            Built for the IIT Bombay e-Yantra Robotics Competition: an autonomous drone system in a simulated
+            warehouse using ROS 2 and Gazebo, with RRT* for dynamic path planning and computer vision for
+            package recognition.
+          </p>
+          <ul>
+            <li>Tested Threshold-Based Gain Scheduling and integral windup protection for PID stability and accurate stopping in front of packages.</li>
+          </ul>
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/d_QmQpVg4uA" title="Warehouse Drone demo" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+      <div class="proj">
+        <div class="when">Aug 2023 –<br>Feb 2024</div>
+        <div>
+          <h3>GeoGuide</h3>
+          <p class="desc">
+            An autonomous three-wheeled robot for the IIT Bombay e-Yantra Robotics Competition, guided by an
+            overhead camera system.
+          </p>
+          <ul>
+            <li>AlexNet-based transfer learning for disaster-scene image classification, with Dijkstra's algorithm for priority-based navigation between event locations.</li>
+            <li>ESP32 Wi-Fi communication and QGIS-based localization.</li>
+          </ul>
+          <div class="links">
+            <a href="https://github.com/OmMandhane/GeoGuide" target="_blank" rel="noopener">Code</a>
+          </div>
+          <div class="media">
+            <iframe src="https://www.youtube.com/embed/GSNIV37t3kY" title="GeoGuide demo" allowfullscreen></iframe>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <!-- AWARDS -->
+  <section id="awards">
+    <div class="wrap sec-head">
+      <span class="tag">[ 05 ]</span>
+      <h2>Honors &amp; awards</h2>
+    </div>
+    <div class="wrap sec-body">
+      <div class="side">selected</div>
+      <div>
+        <ul class="awards-list">
+          <li><span class="yr">2026</span><span>Cleared <strong>GATE 2026</strong> — Computer Science, Data Science &amp; AI</span></li>
+          <li><span class="yr">2025</span><span><strong>ISA General Education Endowment Scholarship</strong> ($2,000), for outstanding potential in automation</span></li>
+          <li><span class="yr">2025</span><span>Qualified Prototype Stage (Stage 3), <strong>Vishwakarma Awards 2025</strong> — Smart Mobility</span></li>
+          <li><span class="yr">2024–25</span><span><strong>Tecnimont (MAIRE) Scholarship</strong> for academic excellence</span></li>
+          <li><span class="yr">2023–25</span><span>Stage 2 Qualifier, <strong>IIT Bombay e-Yantra Robotics Competition</strong> (2023–24 and 2024–25)</span></li>
+          <li><span class="yr">2024</span><span>7th place, <strong>India Automation Games</strong></span></li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SKILLS -->
+  <section id="skills">
+    <div class="wrap sec-head">
+      <span class="tag">[ 06 ]</span>
+      <h2>Skills</h2>
+    </div>
+    <div class="wrap sec-body">
+      <div class="side">toolkit</div>
+      <div>
+        <div class="skill-block">
+          <h4>AI &amp; perception</h4>
+          <div class="skill-tags">
+            <span>PyTorch</span><span>TensorFlow</span><span>OpenCV</span><span>YOLO</span><span>CNNs</span>
+            <span>Transformers</span><span>Diffusion models</span><span>Vision-Language-Action models</span>
+            <span>Monocular depth estimation</span><span>TensorRT</span><span>ONNX</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Robotics</h4>
+          <div class="skill-tags">
+            <span>ROS 2</span><span>MoveIt</span><span>Nav2</span><span>SLAM Toolbox</span><span>Gazebo</span>
+            <span>Path planning</span><span>PID</span><span>MPC</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Programming &amp; libraries</h4>
+          <div class="skill-tags">
+            <span>C++</span><span>Python</span><span>Embedded C</span><span>NumPy</span><span>Pandas</span><span>scikit-learn</span>
+          </div>
+        </div>
+        <div class="skill-block">
+          <h4>Tools &amp; hardware</h4>
+          <div class="skill-tags">
+            <span>Git / GitHub</span><span>Linux CLI</span><span>VS Code</span><span>Jupyter</span><span>Google Colab</span>
+            <span>MATLAB</span><span>Simulink</span><span>NVIDIA Jetson AGX Orin</span><span>Arduino</span>
+            <span>ESP32</span><span>Raspberry Pi</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer id="contact">
+  <div class="wrap foot-grid">
+    <div class="side" style="font-family:'IBM Plex Mono',monospace; font-size:0.78em; color:var(--ink-faint);">get in touch</div>
+    <div>
+      <p>
+        Vivekanand Education Society's Institute of Technology, Mumbai — B.E. Automation &amp; Robotics,
+        Minor in AI &amp; ML (2022–2026), CGPA 8.65/10.
+      </p>
+      <p>I'm happy to hear from labs, collaborators, or teams working on embodied AI and robot learning.</p>
+      <div class="foot-links">
+        <a href="mailto:ommandhane27@gmail.com">ommandhane27@gmail.com</a>
+        <a href="https://github.com/OmMandhane" target="_blank" rel="noopener">GitHub</a>
+        <a href="https://www.linkedin.com/in/ommandhane/" target="_blank" rel="noopener">LinkedIn</a>
+        <a href="https://scholar.google.com/citations?user=An9--HkAAAAJ&hl=en" target="_blank" rel="noopener">Google Scholar</a>
+      </div>
+      <div class="updated">last updated September 2026</div>
+    </div>
+  </div>
+</footer>
 
 </body>
 </html>
